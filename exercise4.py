@@ -29,11 +29,11 @@ def nnCostFunction(nn_params,input_layer_size,hidden_layer_size,num_labels,X, y,
     delta3=output-y
     delta2=dot(theta2.transpose(),delta3)*sigmoidGradient(a3)
 
-    theta2_gradient=(dot(delta3,output)+lambdaPar*theta2)/len(X)
-    theta1_gradient=(dot(delta2,z2)+lambdaPar*theta1)/len(X)
+    theta2_gradient=(dot(delta3,z2)+lambdaPar*theta2)/len(X)
+    theta1_gradient=(dot(delta2,z1)+lambdaPar*theta1)/len(X)
 
-    theta2_gradient[:,1]=dot(delta3,output)/len(X)
-    theta1_gradient[:,1]=dot(delta2,output)/len(X)
+    theta2_gradient[:,0]=dot(delta3,output)/len(X)
+    theta1_gradient[:,0]=dot(delta2,output)/len(X)
 
 
     return [cost,[theta1_gradient,theta2_gradient]]
